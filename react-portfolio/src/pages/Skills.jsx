@@ -4,10 +4,8 @@ export default function Skills(){
     const [skills, setSkills] = useState([]);
     
     useEffect(() => {
-        const getSkills = async () => {
-            const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:8888/api";
-                
-            let response = await fetch(`${apiUrl}/skills`);
+        const getSkills = async () => {                
+            let response = await fetch("http://localhost:8888/api/skills");
             let data = await response.json();
             setSkills(data);
         };
