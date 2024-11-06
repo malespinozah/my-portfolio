@@ -11,7 +11,7 @@ const cors = require("cors"); // this ables to receive/parse JSON from request
 const { MongoClient } = require("mongodb");
 
 const app = express();
-const port = process.env.PORT || "8888";
+const port = process.env.PORT;
 
 const dbUrl = `mongodb+srv://${process.env.DBUSER}:${process.env.DBPWD}@cluster0.g4rtgpd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
 

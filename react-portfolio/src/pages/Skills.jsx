@@ -5,7 +5,7 @@ export default function Skills(){
     
     useEffect(() => {
         const getSkills = async () => {                
-            let response = await fetch("http://localhost:8888/api/skills");
+            let response = await fetch("https://my-backend-eight-beta.vercel.app/api/skills");
             let data = await response.json();
             setSkills(data);
         };
