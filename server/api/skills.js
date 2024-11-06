@@ -6,7 +6,7 @@ const dbUrl = `mongodb+srv://${process.env.DBUSER}:${process.env.DBPWD}@cluster0
 const client = new MongoClient(dbUrl);
 
 const corsOptions = {
-  origin: 'https://my-portfolio-git-main-malespinozahs-projects.vercel.app', // Your Frontend URL
+  origin: 'https://my-portfolio-ndssyvt7a-malespinozahs-projects.vercel.app', // Your Frontend URL
 };
 
 module.exports = async (req, res) => {
