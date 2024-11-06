@@ -5,7 +5,7 @@ export default function Skills(){
     useEffect(() => {
         const getSkills = async () => {
             try {
-                let response = await fetch("http://localhost:8888/api/skills");
+                let response = await fetch("https://my-portfolio-one-olive-35.vercel.app/api/skills");
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
