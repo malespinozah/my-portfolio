@@ -2,18 +2,14 @@ import { useState, useEffect } from "react"
 
 export default function Skills(){
     const [skills, setSkills] = useState([]);
+    
     useEffect(() => {
         const getSkills = async () => {
-            try {
-                let response = await fetch("https://my-portfolio-one-olive-35.vercel.app/api/skills");
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                let data = await response.json();
-                setSkills(data);
-            } catch (error) {
-                console.error("Fetch error:", error);
-            }
+            const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:8888/api";
+                
+            let response = await fetch(`${apiUrl}/skills`);
+            let data = await response.json();
+            setSkills(data);
         };
         getSkills();
       }, []);
