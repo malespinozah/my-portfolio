@@ -4,7 +4,7 @@ export default function Projects(){
     const [projects, setProjects] = useState([]);
     useEffect(() => {
         const getProjects = async () => {
-          let response = await fetch("http://localhost:8888/api/projects");
+          let response = await fetch("my-portfolio-backend-lake.vercel.app/api/projects");
           let data = await response.json();
           setProjects(data);
         }
