@@ -40,7 +40,7 @@ app.get("/api/skills", async (request, response) => {
 
   //set up server listening
 app.listen(port, () => {
-    console.log(`Listening on http://localhost:${port}`);
+    console.log(`Listening on https://localhost:${port}`);
   });
 
 async function connection() {
