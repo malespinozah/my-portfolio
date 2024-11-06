@@ -6,7 +6,7 @@ dotenv.config();
 
 const connectDB = async () => {
     try {
-        const conn = await mongoose.connect('mongodb+srv://portfoliouser:Zc3o9iNQwWs0jNTl@cluster0.g4rtgpd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0');
+        const conn = await mongoose.connect(`mongodb+srv://${process.env.DBUSER}:${process.env.DBPWD}@cluster0.g4rtgpd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`);
         console.log(`MongoDB Connected: ${conn.connection.host}`);
     } catch (error) {
         console.error(error);
