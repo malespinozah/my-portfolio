@@ -48,17 +48,16 @@ async function connection() {
 /* functions */
 
 async function getSkills() {
-    db = await connection(); //await result of connection() and store the returned db
-    var results = db.collection("Skills").find({}); //{} as the query means no filter, so select all
-    res = await results.toArray();
-    return res;
+    const db = await connection(); //await result of connection() and store the returned db
+    const results = await db.collection("Skills").find({}).toArray(); // query and convert the results to an array
+    return results; // returning directly
 }
 
 async function getProjects() {
-    db = await connection(); //await result of connection() and store the returned db
-    var results = db.collection("Projects").find({}); //{} as the query means no filter, so select all
-    res = await results.toArray();
-    return res;
+    const db = await connection(); //await result of connection() and store the returned db
+    const results = await db.collection("Projects").find({}).toArray(); // query and convert the results to an array
+    return results; // returning directly
 }
+
 
   
