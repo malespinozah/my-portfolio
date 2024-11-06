@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(cors({
-  origin: "*"
+  origin: "https://my-portfolio-one-olive-35.vercel.app"
 }));
 
 /*
