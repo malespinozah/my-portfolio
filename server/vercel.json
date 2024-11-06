@@ -2,22 +2,22 @@
   "version": 2,
   "builds": [
     {
-      "src": "SERVER/API/skills.js",
+      "src": "server/api/skills.js",
       "use": "@vercel/node"
     },
     {
-      "src": "SERVER/API/projects.js",
+      "src": "server/api/projects.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/api/skills",
-      "dest": "SERVER/API/skills.js"
+      "dest": "server/api/skills.js"
     },
     {
       "src": "/api/projects",
-      "dest": "SERVER/API/projects.js"
+      "dest": "server/api/projects.js"
     }
   ]
 }
