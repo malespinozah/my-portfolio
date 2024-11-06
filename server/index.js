@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(cors({
-  origin: "https://my-portfolio-one-olive-35.vercel.app"
+  origin: "https://my-portfolio-one-olive-35.vercel.app",
 }));
 
 /*
@@ -40,7 +40,7 @@ app.get("/api/skills", async (request, response) => {
 
   //set up server listening
 app.listen(port, () => {
-    console.log(`Listening on https://localhost:${port}`);
+    console.log(`Listening on http://localhost:${port}`);
   });
 
 async function connection() {
