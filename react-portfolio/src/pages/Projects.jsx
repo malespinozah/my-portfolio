@@ -6,6 +6,8 @@ export default function Projects(){
         const getProjects = async () => {
           let response = await fetch("https://my-backend-chi-two.vercel.app/api/projects");
           let data = await response.json();
+          // Sort the projects by created date in descending order
+          data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
           setProjects(data);
         }
         getProjects();
