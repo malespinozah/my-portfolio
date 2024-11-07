@@ -43,6 +43,7 @@ const transporter = nodemailer.createTransport({
       user: process.env.USERMAIL,
       pass: process.env.USERPWD,
   },
+  debug: true,
 });
 
   //set up server listening
