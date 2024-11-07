@@ -1,4 +1,5 @@
 const express = require("express");
+const nodemailer = require('nodemailer');
 const dotenv = require("dotenv");
 //load the environment variables from .env
 dotenv.config();
@@ -36,6 +37,14 @@ app.get("/api/projects", async (request, response) => {
     response.json(projects);
   });
 
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+      user: process.env.USERMAIL,
+      pass: process.env.USERPWD,
+  },
+});
+
   //set up server listening
 app.listen(port, () => {
     console.log(`Listening on http://localhost:${port}`);
@@ -68,6 +77,37 @@ async function getProjects() {
     const results = await db.collection("Projects").find({}).toArray(); // query and convert the results to an array
     return results; // returning directly
 }
+
+/* mail */
+
+app.post('/api/contact', (req, res) => {
+  const { nameUser, surnameUser, emailUser, phoneUser, subjectMessage, textUser } = req.body;
+
+  const mailOptions = {
+      from: emailUser,
+      to: process.env.USERMAIL,
+      subject: `New message from ${nameUser} ${surnameUser}: ${subjectMessage}`,
+      text: `You have a new contact form submission:
+      
+      Name: ${nameUser} ${surnameUser}
+      Email: ${emailUser}
+      Phone: ${phoneUser}
+      Subject: ${subjectMessage}
+      
+      Message: 
+      ${textUser}`,
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+          console.error('Error sending email:', error);
+          return res.status(500).json({ message: 'Failed to send email' });
+      }
+      console.log('Email sent:', info.response);
+      res.status(200).json({ message: 'Email sent successfully!' });
+  });
+});
+
 
 
 module.exports = app
