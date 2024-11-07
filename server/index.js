@@ -80,7 +80,7 @@ async function getProjects() {
 
 /* mail */
 
-app.post('/api/contact', (req, res) => {
+app.post("/api/contact", (req, res) => {
   const { nameUser, surnameUser, emailUser, phoneUser, subjectMessage, textUser } = req.body;
 
   const mailOptions = {
