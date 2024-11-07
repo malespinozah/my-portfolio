@@ -87,7 +87,7 @@ export default function Contact(){
                     </div>
                     <div id="contact-form">
                         {isSubmitted ? (
-                            <p>Thank you for your message! We will get back to you soon.</p>
+                            <p style={{ textAlign: 'center' }}>Thank you for your message! We will get back to you soon.</p>
                         ) : (
                             <form name="contactForm" onSubmit={handleSubmit}>
                                 <div className="user-info">
