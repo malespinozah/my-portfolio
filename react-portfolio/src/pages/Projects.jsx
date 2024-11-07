@@ -7,14 +7,19 @@ export default function Projects(){
           let response = await fetch("https://my-backend-chi-two.vercel.app/api/projects");
           let data = await response.json();
 
-          console.log(data); // Log data to check for 'createdAt' field
+      // Log the entire data to inspect its structure
+      console.log(data);
 
-          if (data.length > 0 && data[0].createdAt) {
-            // Sort the projects by 'createdAt' field in descending order
-            data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-          } else {
-            console.error('No valid createdAt field found in data');
-          }
+      // Check if 'createdAt' exists, or try using another field like 'date'
+      if (data.length > 0 && data[0].createdAt) {
+        // Sort by 'createdAt' if it exists
+        data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+      } else if (data.length > 0 && data[0].date) {
+        // If 'createdAt' doesn't exist, try sorting by 'date'
+        data.sort((a, b) => new Date(b.date) - new Date(a.date));
+      } else {
+        console.error('No valid date field found in data');
+      }
 
           setProjects(data);
         }
