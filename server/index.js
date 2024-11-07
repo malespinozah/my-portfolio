@@ -41,11 +41,20 @@ app.listen(port, () => {
     console.log(`Listening on http://localhost:${port}`);
   });
 
-async function connection() {
-    await client.connect();
-    db = client.db("Portfolio"); //select testdb database
-    return db;
+module.exports = app;
+
+  async function connection() {
+    try {
+        await client.connect();
+        console.log("Connected to MongoDB");
+        const db = client.db("Portfolio");
+        return db;
+    } catch (error) {
+        console.error("Failed to connect to MongoDB:", error);
+        throw error; // This will propagate the error to the calling function
+    }
 }
+
   
 /* functions */
 
