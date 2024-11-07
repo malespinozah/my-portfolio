@@ -31,7 +31,7 @@ app.get("/api/skills", async (request, response) => {
     response.json(skills);
   });
 
-  app.get("/api/projects", async (request, response) => {
+app.get("/api/projects", async (request, response) => {
     let projects = await getProjects();
     response.json(projects);
   });
@@ -41,9 +41,8 @@ app.listen(port, () => {
     console.log(`Listening on http://localhost:${port}`);
   });
 
-module.exports = app;
 
-  async function connection() {
+async function connection() {
     try {
         await client.connect();
         console.log("Connected to MongoDB");
