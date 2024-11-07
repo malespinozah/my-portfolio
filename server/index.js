@@ -80,8 +80,8 @@ async function getProjects() {
 
 /* mail */
 
-app.post("/api/contact", (req, res) => {
-  const { nameUser, surnameUser, emailUser, phoneUser, subjectMessage, textUser } = req.body;
+app.post("/api/contact", async (request, response) => {
+  const { nameUser, surnameUser, emailUser, phoneUser, subjectMessage, textUser } = request.body;
 
   const mailOptions = {
       from: emailUser,
@@ -101,10 +101,10 @@ app.post("/api/contact", (req, res) => {
   transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
           console.error('Error sending email:', error);
-          return res.status(500).json({ message: 'Failed to send email' });
+          return response.json({ message: 'Failed to send email' });
       }
       console.log('Email sent:', info.response);
-      res.status(200).json({ message: 'Email sent successfully!' });
+      response.json({ message: 'Email sent successfully!' });
   });
 });
 
