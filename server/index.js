@@ -13,6 +13,8 @@ const dbUrl = `mongodb+srv://${process.env.DBUSER}:${process.env.DBPWD}@cluster0
 
 const client = new MongoClient(dbUrl);
 
+const port = process.env.PORT || "8888";
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
