@@ -70,4 +70,4 @@ async function getProjects() {
 }
 
 
-  
+module.exports = app
