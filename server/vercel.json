@@ -2,19 +2,23 @@
     "version": 2,
     "builds": [
       {
-        "src": "index.js",
+        "src": "react-portfolio/package.json",
+        "use": "@vercel/static-build"
+      },
+      {
+        "src": "server/index.js",
         "use": "@vercel/node"
       }
     ],
     "routes": [
       {
         "src": "/api/(.*)",
-        "dest": "server/index.js"
+        "dest": "/server/index.js"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "/react-portfolio/build/$1"
       }
-    ],
-    "env": {
-      "DBUSER": "portfoliouser",
-      "DBPWD": "Zc3o9iNQwWs0jNTl"
-    }
+    ]
   }
   
